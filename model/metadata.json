@@ -1,0 +1,27 @@
+{
+    "model_name": "heart_disease_mlp_smote",
+    "model_type": "MLP neural network",
+    "dataset": "Heart Disease dataset",
+    "sampling": "SMOTE applied on scaled training data",
+    "scaler": "StandardScaler fitted on X_train",
+    "feature_order": [
+        "age",
+        "sex",
+        "cp",
+        "trestbps",
+        "chol",
+        "fbs",
+        "restecg",
+        "thalach",
+        "exang",
+        "oldpeak",
+        "slope",
+        "ca",
+        "thal"
+    ],
+    "target_column": "target",
+    "output": {
+        "0": "No heart disease",
+        "1": "Heart disease"
+    }
+}
