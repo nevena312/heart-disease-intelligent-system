@@ -8,10 +8,7 @@ from keras.models import load_model
 
 app = FastAPI(title="Heart Disease AI Service")
 
-
-# =========================
 # Load model artifacts
-# =========================
 
 MODEL_PATH = "../model/heart_disease_mlp_smote.keras"
 SCALER_PATH = "../model/scaler.pkl"
@@ -29,10 +26,7 @@ with open(FEATURE_ORDER_PATH, "r") as f:
 
 print("AI service ready.")
 
-
-# =========================
 # DTO
-# =========================
 
 class PredictionRequest(BaseModel):
     age: float
@@ -49,10 +43,7 @@ class PredictionRequest(BaseModel):
     ca: float
     thal: float
 
-
-# =========================
 # Health check
-# =========================
 
 @app.get("/")
 def health_check():
@@ -61,10 +52,7 @@ def health_check():
         "message": "Heart Disease AI Service is running"
     }
 
-
-# =========================
 # Prediction endpoint
-# =========================
 
 @app.post("/predict")
 def predict(request: PredictionRequest):
