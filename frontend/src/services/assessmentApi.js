@@ -13,3 +13,14 @@ export const getAssessments = async () => {
   const response = await api.get("/assessments");
   return response.data;
 };
+
+export const updateDoctorNote = async (id, doctorNote) => {
+  const response = await api.patch(
+    `/assessments/${id}/note`,
+    {
+      doctorNote
+    }
+  );
+
+  return response.data;
+};

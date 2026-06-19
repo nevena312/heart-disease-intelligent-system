@@ -3,6 +3,7 @@ package com.nevena.heartdiseasebackend.controller;
 import com.nevena.heartdiseasebackend.dto.PredictionRequestDto;
 import com.nevena.heartdiseasebackend.entity.HealthAssessment;
 import com.nevena.heartdiseasebackend.service.HealthAssessmentService;
+import com.nevena.heartdiseasebackend.dto.DoctorNoteRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,5 +26,13 @@ public class HealthAssessmentController {
     @GetMapping
     public List<HealthAssessment> getAllAssessments() {
         return healthAssessmentService.getAllAssessments();
+    }
+
+    @PatchMapping("/{id}/note")
+    public HealthAssessment updateDoctorNote(
+            @PathVariable Long id,
+            @Valid @RequestBody DoctorNoteRequestDto request
+    ) {
+        return healthAssessmentService.updateDoctorNote(id, request.getDoctorNote());
     }
 }

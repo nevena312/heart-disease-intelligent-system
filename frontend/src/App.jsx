@@ -7,7 +7,6 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import History from "./pages/History";
 import Statistics from "./pages/Statistics";
-import AboutModel from "./pages/AboutModel";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="history" element={<History />} />
           <Route path="statistics" element={<Statistics />} />
-          <Route path="about" element={<AboutModel />} />
         </Route>
       </Routes>
     </BrowserRouter>

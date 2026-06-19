@@ -56,4 +56,7 @@ public class HealthAssessment {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "doctor_note")
+    private String doctorNote;
 }

@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { createAssessment } from "../services/assessmentApi";
 
+const predictionLabels = {
+  0: "No heart disease detected",
+  1: "Possible heart disease detected"
+};
+
 function Dashboard() {
   const [formData, setFormData] = useState({
     age: "",
@@ -211,16 +216,23 @@ function Dashboard() {
 
         <aside className="side-panel">
           <section className="info-card">
-            <h2>How it works</h2>
-            <p>
-              The application sends patient parameters to the Spring Boot backend.
-              The backend calls the Python AI service, which loads the trained MLP model and scaler.
-            </p>
+            <h2>Kako tumačiti rezultat</h2>
+
             <ul className="info-list">
-              <li>Input values are validated before prediction.</li>
-              <li>The model returns class, probability and risk level.</li>
-              <li>Each assessment is saved in PostgreSQL.</li>
+                <li>
+                    <strong>Low risk</strong> – nizak procenjeni rizik od srčanog oboljenja.
+                </li>
+                <li>
+                    <strong>Medium risk</strong> – preporučuje se dodatna analiza i praćenje pacijenta.
+                </li>
+                <li>
+                    <strong>High risk</strong> – povećana verovatnoća prisustva srčanog oboljenja i potreba za daljom dijagnostikom.
+                </li>
             </ul>
+
+            <p className="message">
+                Napomena: rezultat predstavlja pomoć pri proceni rizika i ne predstavlja konačnu medicinsku dijagnozu.
+            </p>
           </section>
 
           {error && (
@@ -238,8 +250,10 @@ function Dashboard() {
               </div>
 
               <div className="result-row">
-                <span className="result-label">Predicted class</span>
-                <span className="result-value">{result.predictedClass}</span>
+                <span className="result-label">Prediction</span>
+                <span className="result-value">
+                    {predictionLabels[result.predictedClass]}
+                </span>
               </div>
 
               <div className="result-row">

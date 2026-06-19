@@ -49,4 +49,13 @@ public class HealthAssessmentService {
     public List<HealthAssessment> getAllAssessments() {
         return healthAssessmentRepository.findAll();
     }
+
+    public HealthAssessment updateDoctorNote(Long id, String doctorNote) {
+        HealthAssessment assessment = healthAssessmentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Assessment not found."));
+
+        assessment.setDoctorNote(doctorNote);
+
+        return healthAssessmentRepository.save(assessment);
+    }
 }
